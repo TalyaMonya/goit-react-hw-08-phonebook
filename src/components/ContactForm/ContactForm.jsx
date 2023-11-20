@@ -1,14 +1,19 @@
 import { Formik, ErrorMessage } from 'formik';
-import { StyledForm, Label, DivLabel, Error, FieldFormik, StyledButton } from './ContactForm.styled';
+import { StyledForm, Label, DivLabel, Error, FieldFormik, StyledButton, FormContainer } from './ContactForm.styled';
 import { FaUserSecret } from 'react-icons/fa';
 import { BsTelephone } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from 'redux/operations';
+import { addContacts } from 'redux/contacts/operations';
 import { Schema } from './schemaYap';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { toastifyOptions } from 'utils/toastifyOptions';
 
 
-const initialValues = { name: '', phone: '' };
+
+const initialValues = { name: '', number: '' };
 
 
 export const ContactForm = () => {
@@ -16,22 +21,26 @@ export const ContactForm = () => {
     const dispatch = useDispatch();
 
 
-    const onAddContact = ({ name, phone }) => {
+    const onAddContact = ({ name, number }) => {
         const isInContacts = contacts.some(
         contact => contact.name.toLowerCase().trim() === name.toLowerCase().trim());
         // Перевіряє, чи існує контакт із таким самим ім'ям у списку контактів. Якщо контакт вже існує, виводиться попередження.
         if (isInContacts) {
-            alert(`${name} is already in contacts`);
-        return;
+            // alert(`${name} is already in contacts`);
+        return toast.error(`${name} is already in contacts`, toastifyOptions);
          }
-        dispatch(addContacts({ name, phone }));
+        dispatch(addContacts({ name, number }));
+        toast.success(`${name} Added to contacts`, toastifyOptions);
     };
 
+
+
     return (
-        <Formik
+        <FormContainer>
+             <Formik
             initialValues={initialValues}
             onSubmit={(values, { resetForm }) => {
-                onAddContact({ ...values });
+                onAddContact({...values});
                 resetForm();
             }}
             validationSchema={Schema}
@@ -45,13 +54,14 @@ export const ContactForm = () => {
 
                 <Label>
                     <DivLabel><BsTelephone/>Number</DivLabel>
-                    <FieldFormik type="tel" name="phone" placeholder="Введіть номер" />
-                    <Error><ErrorMessage name="phone"/></Error>
+                    <FieldFormik type="tel" name="number" placeholder="Введіть номер" />
+                    <Error><ErrorMessage name="number"/></Error>
                 </Label>
 
                 <StyledButton type="submit">Add contact</StyledButton>
             </StyledForm>
-    </Formik> 
+            </Formik>
+       </FormContainer>
     )
 }
 

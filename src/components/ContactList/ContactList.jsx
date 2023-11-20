@@ -1,24 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
-import { List, ListItem, Btn } from "./ContactList.styled";
+import { List, ListItem, Btn, ListContainer } from "./ContactList.styled";
 import {RiDeleteBinLine} from 'react-icons/ri'
-import { selectVisibleContacts } from "../../redux/selectors";
-import { deleteContacts } from "redux/operations";
+import { selectVisibleContacts } from "../../redux/contacts/selectors";
+import { deleteContacts } from "redux/contacts/operations";
 
 
 
 export const ContactList = () => {
     const contacts = useSelector(selectVisibleContacts);
-
     const dispatch = useDispatch();
 
    
     return (
-        <List>
+        <ListContainer>
+            <List>
             {contacts.map(contact => {
                 return (
                     <ListItem key={contact.id}>
                         <span>{contact.name}:</span>
-                        <span>{contact.phone}</span>
+                        <span>{contact.number}</span>
                         <Btn
                         type="button"
                         name="delete"
@@ -29,6 +29,7 @@ export const ContactList = () => {
            )
        })}
     </List>
+        </ListContainer>
     ) 
 }
 

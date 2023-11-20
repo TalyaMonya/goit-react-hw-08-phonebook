@@ -11,8 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   min-height: 100vh;
-  background-color: #4B0082;
-  background-image: url('https://fon.litrelax.ru/uploads/posts/2023-02/1676787134_foni-club-p-oboi-sovi-na-pk-12.jpg');
+  background-color: #27294a;
+  background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1614409184_63-p-krasivii-temnii-fon-dlya-prezentatsii-81.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }

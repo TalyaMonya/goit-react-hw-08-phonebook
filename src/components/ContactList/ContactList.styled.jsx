@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const ListContainer = styled.div`
+  display: flex;
+    justify-content: center;
+`
+
 
 export const List = styled.ul`
     display: flex;
@@ -36,21 +41,21 @@ export const Btn = styled.button`
   border-radius: 8px;
 
   color: ${p => p.theme.colors.white};
-  background-color: ${p => p.theme.colors.muted};
+  background-color: #e84e43;
   box-shadow: ${p => p.theme.shadows.boxShadow};
   transition: all 0.2s ease-in-out;
 
   &:hover,
   :focus {
     background-color: ${p => p.theme.colors.primary};
-    color: ${p => p.theme.colors.accent};
+    color: rgb(0, 206, 209);
     box-shadow: -2px -2px 5px #fff, 2px 2px 5px #8ba793;
     svg {
       fill: ${p => p.theme.colors.accent};
       stroke: ${p => p.theme.colors.accent};
     }
     &:active {
-      color: ${p => p.theme.colors.accent};
+      color: rgb(0, 206, 209);
       box-shadow: inset 1px 1px 2px #8ba793, inset -1px -1px 2px #fff;
       svg {
         fill: ${p => p.theme.colors.accent};

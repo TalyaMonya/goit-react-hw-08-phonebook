@@ -6,7 +6,7 @@ export const Schema = Yup.object().shape({
     .min(2)
     .trim()
     .required(),
-  phone: Yup
+  number: Yup
     .string()
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,

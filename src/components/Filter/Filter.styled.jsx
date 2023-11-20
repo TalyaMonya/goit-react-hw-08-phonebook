@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 
 export const Div = styled.div`
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
 `
 export const Label = styled.label`
     color: ${p => p.theme.colors.text};

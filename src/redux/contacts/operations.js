@@ -1,16 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { toastifyOptions } from "utils/toastifyOptions";
 
 
-// Базовий URL для axios
-axios.defaults.baseURL = 'https://654b86185b38a59f28ef3c4e.mockapi.io';
+// axios.defaults.baseURL = 'https://654b86185b38a59f28ef3c4e.mockapi.io';
 
-// Створення асинхронної Thunk-дії fetchContacts
 export const fetchContacts = createAsyncThunk(
     'contacts/fetchAll',
     async (_, thunkAPI) => {
         try {
-            // Надсилання GET-запиту на '/contacts'
             const response = await axios.get('/contacts');
             return response.data;
         } catch (error) {
@@ -19,13 +18,12 @@ export const fetchContacts = createAsyncThunk(
     }
 );
 
-// Створення асинхронної Thunk-дії addContacts
 export const addContacts = createAsyncThunk(
     'contacts/addContacts',
-    async ({ name, phone }, thunkAPI) => {
+    async ({ name, number }, thunkAPI) => {
         try {
-            // Надсилання POST-запиту на '/contacts' з даними { name, number }
-            const response = await axios.post('/contacts', {name, phone});
+            const response = await axios.post('/contacts', { name, number });
+            toast.success(`${name} Added to contacts`, toastifyOptions);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -34,13 +32,12 @@ export const addContacts = createAsyncThunk(
 );
 
 
-// Створення асинхронного Thunk-действия deleteContacts
 export const deleteContacts = createAsyncThunk(
     'contacts/deleteContacts',
     async (contactId, thunkAPI) => {
         try {
-            // Надсилання DELETE-запиту на `/contacts/${contactId}`
             const response = await axios.delete(`/contacts/${contactId}`);
+            toast.success('Contact deleted...', toastifyOptions);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);

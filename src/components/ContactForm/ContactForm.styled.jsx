@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { Field, Form } from 'formik';
 
+export const FormContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export const StyledForm = styled(Form)`
     margin-bottom: 30px;
@@ -47,41 +52,27 @@ export const FieldFormik = styled(Field)`
 `
 
 export const StyledButton = styled.button`
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
+  margin: 0 auto;
+  width: 120px;
+  font-size: 16px;
+  border: 1 solid;
+  border-radius: 4px;
+  padding: 8px 12px;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: #00CED1;
 
-    padding: 8px 16px;
-    max-width: 100%;
 
-    border: none;
-    outline: none;
-    border-radius: 8px;
-
-    box-shadow: ${p => p.theme.shadows.boxShadow};
-    transition: all 0.2s ease-in-out;
-
-    background-color: ${p => p.theme.colors.muted};
-    color: ${p => p.theme.colors.white};
-    cursor: pointer;
-
-  &:hover,
-  :focus {
-    background-color: ${p => p.theme.colors.primary};
-    color: ${p => p.theme.colors.accent};
-    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #8ba793;
-    svg {
-      fill: ${p => p.theme.colors.accent};
-      stroke: ${p => p.theme.colors.accent};
-    }
-    :active {
-      color: ${p => p.theme.colors.accent};
-      box-shadow: inset 1px 1px 2px #8ba793, inset -1px -1px 2px #fff;
-      svg {
-        fill: ${p => p.theme.colors.accent};
-        stroke: ${p => p.theme.colors.accent};
-      }
-    }
-  }
+&:hover {
+  border: 2px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
+  background-color: #1d81c6;
+}
 `
