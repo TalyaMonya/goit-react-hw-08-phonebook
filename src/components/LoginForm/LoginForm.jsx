@@ -28,7 +28,7 @@ export const LoginForm = () => {
                     type="email"
                     name="email"
                     placeholder="Введіть адресу електронної пошти"
-                   pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                   pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
                     title="Будь ласка, введіть дійсну адресу електронної пошти"
                     required />
             </Label>
@@ -38,7 +38,7 @@ export const LoginForm = () => {
                     type="password"
                     name="password"
                     placeholder="Введіть пароль"
-                    pattern="^[a-zA-Z0-9!@#$%^&*()-_=+`~[\]{}|:<>/?]+$"
+                    pattern="(?=.*\d)(?=.*[a-z]).{8,}"
                     title="Пароль повинен містити тільки латинські літери (як великі, так і малі), цифри та інші символи"
                     required />
             </Label>
